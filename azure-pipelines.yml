@@ -21,10 +21,10 @@ stages:
         version: '7.0.x'
     - task: NuGetCommand@2
       inputs:
-        restoreSolution: '**/*.sln'
+        restoreSolution: 'src/DotnetProject/DotnetProject.sln'
     - task: VSBuild@1
       inputs:
-        solution: '**/*.sln'
+        solution: 'src/DotnetProject/DotnetProject.sln'
         msbuildArgs: '/p:Configuration=$(buildConfiguration)'
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
@@ -61,7 +61,7 @@ schedules:
         - main
     always: true
 
-  - cron: '5 10 * * *'
+  - cron: '20 10 * * *'
     displayName: Daily Morning 10:05AM Build
     branches:
       include:
