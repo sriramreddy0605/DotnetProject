@@ -25,7 +25,7 @@ stages:
         restoreSolution: 'DotnetProject.sln'
     - task: VSBuild@1
       inputs:
-        solution: 'DotnetProject.sln'
+        solution: 'sriramreddy0605.DotnetProject'
         msbuildArgs: '/p:Configuration=$(buildConfiguration)'
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
