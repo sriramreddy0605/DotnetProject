@@ -15,6 +15,7 @@ stages:
   jobs:
   - job: BuildJob
     steps:
+    - checkout: self
     - task: UseDotNet@2
       inputs:
         packageType: 'sdk'
@@ -39,6 +40,7 @@ stages:
       inputs:
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
+        publishTestResults: true
 
 - stage: Deploy
   displayName: 'Deploy Stage'
@@ -48,29 +50,29 @@ stages:
     steps:
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: 'DotnetWebAppConnection'  # Your service connection name
+        azureSubscription: 'DotnetWebAppConnection'
         appType: 'webApp'
-        appName: 'MyDotnetWebApp'                    # Your Azure Web App name
+        appName: 'MyDotnetWebApp'
         package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 schedules:
-  - cron: '0 0 * * *'
-    displayName: Daily Midnight Build
-    branches:
-      include:
-        - main
-    always: true
+- cron: '0 0 * * *'
+  displayName: Daily Midnight Build
+  branches:
+    include:
+      - main
+  always: true
 
-  - cron: '20 10 * * *'
-    displayName: Daily Morning 10:05AM Build
-    branches:
-      include:
-        - main
-    always: true
+- cron: '35 4 * * *'
+  displayName: Daily Morning 10:05AM IST Build
+  branches:
+    include:
+      - main
+  always: true
 
-  - cron: '0 12 * * 0'
-    displayName: Weekly Sunday Noon Build
-    branches:
-      include:
-        - main
-    always: true
+- cron: '0 12 * * 0'
+  displayName: Weekly Sunday Noon Build
+  branches:
+    include:
+      - main
+  always: true
