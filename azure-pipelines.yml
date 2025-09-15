@@ -26,8 +26,7 @@ stages:
     - task: VSBuild@1
       inputs:
         solution:  'sriramreddy0605.DotnetProject/MyApp.csproj'
-        msbuildArgs: 'sriramreddy0605.DotnetProject.sln /p:Configuration=Release
-'
+        msbuildArgs: '/p:Configuratoin=Release'
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
 
