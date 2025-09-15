@@ -22,10 +22,10 @@ stages:
         version: '7.0.x'
     - task: NuGetCommand@2
       inputs:
-        restoreSolution: 'src/DotnetProject/DotnetProject.sln'
+        restoreSolution: 'DotnetProject.sln'
     - task: VSBuild@1
       inputs:
-        solution: 'src/DotnetProject/DotnetProject.sln'
+        solution: 'DotnetProject.sln'
         msbuildArgs: '/p:Configuration=$(buildConfiguration)'
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
