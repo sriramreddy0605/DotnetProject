@@ -52,3 +52,25 @@ stages:
         appType: 'webApp'
         appName: 'MyDotnetWebApp'                    # Your Azure Web App name
         package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+schedules:
+  - cron: '0 0 * * *'
+    displayName: Daily Midnight Build
+    branches:
+      include:
+        - main
+    always: true
+
+  - cron: '0 10 * * *'
+    displayName: Daily Morning 10AM Build
+    branches:
+      include:
+        - main
+    always: true
+
+  - cron: '0 12 * * 0'
+    displayName: Weekly Sunday Noon Build
+    branches:
+      include:
+        - main
+    always: true
