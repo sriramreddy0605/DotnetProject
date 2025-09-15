@@ -61,8 +61,8 @@ schedules:
         - main
     always: true
 
-  - cron: '0 10 * * *'
-    displayName: Daily Morning 10AM Build
+  - cron: '5 10 * * *'
+    displayName: Daily Morning 10:05AM Build
     branches:
       include:
         - main
