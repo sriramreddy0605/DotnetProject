@@ -25,8 +25,9 @@ stages:
         restoreSolution: 'DotnetProject.sln'
     - task: VSBuild@1
       inputs:
-        solution: 'sriramreddy0605.DotnetProject'
-        msbuildArgs: '/p:Configuration=$(buildConfiguration)'
+        solution:  'sriramreddy0605.DotnetProject/MyApp.csproj'
+        msbuildArgs: 'sriramreddy0605.DotnetProject.sln /p:Configuration=Release
+'
         platform: 'Any CPU'
         configuration: '$(buildConfiguration)'
 
